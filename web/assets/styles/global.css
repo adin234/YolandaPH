@@ -51,3 +51,21 @@ footer {
 	border-top: solid 5px #60d99c;
 	padding: 30px 0;
 }
+
+/* CUSTOM
+----------------------------------*/
+.full {
+	width: 100%;
+}
+
+.half {
+	width: 48%;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}

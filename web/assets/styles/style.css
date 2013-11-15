@@ -99,7 +99,7 @@
 	padding-bottom: 5px;
 }
 .location .filters .options .group { margin: 5px 0; }
-.location .filters .options input[type="checkbox"] { margin-top: -1px; }
+.location .filters .options input[type="radio"] { margin-top: -3px; }
 .location .filters .actions { margin-top: 20px; }
 .location .filters .actions a.donate {
 	background: #60d99c;
@@ -111,4 +111,51 @@
 	text-decoration: none;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
+}
+
+/* DONATION FORM */
+.donation-form .container {
+	background: #FFFFFF;
+	padding: 30px 20px;
+}
+.donation-form .content {
+	position: relative;
+}
+.donation-form .content h2 {
+	font-family: open_sansbold;
+	font-size: 30px;
+}
+.donation-form .content .form {
+	float: left;
+	width: 50%;
+}
+.donation-form .content .map {
+	bottom: 0px;
+	height: 100%;
+	right: 0px;
+	top: 0px;
+	position: absolute;
+}
+.donation-form .content .form form {
+	padding: 20px;
+}
+.donation-form .content .form form .full > .half:nth-child(1) input {
+	margin-right: 5px;
+}
+.donation-form .content .map {
+	float: right;
+	height: 100%;
+	width: 50%;
+}
+.donation-form .content .form form .bootstrap-tagsinput {
+	margin-bottom: 0px;
+	width: 100%;
+}
+
+.donation-form .content .form form .row {
+	margin-bottom: 10px;
+}
+
+.donation-form .content .form form input[type="radio"] {
+margin-top: -3px;
 }

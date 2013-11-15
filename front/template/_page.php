@@ -12,13 +12,21 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="/assets/styles/reset.css" />
-    
+    <link rel="stylesheet" type="text/css" href="/assets/styles/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/styles/bootstrap-typeahead.css" />
+
     <!-- Custom -->
     <link rel="stylesheet" type="text/css" href="/assets/styles/fonts.css" />
     <link rel="stylesheet" type="text/css" href="/assets/styles/global.css" />
     <link rel="stylesheet" type="text/css" href="/assets/styles/style.css" />
 
     <!-- Javascripts -->
+    <script type="text/javascript" src="/assets/scripts/jquery.js"></script>
+    <script type="text/javascript" src="/assets/scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="/assets/scripts/typeahead.js"></script>
+    <script type="text/javascript" src="/assets/scripts/bootstrap-tagsinput.js"></script>
+    <script type="text/javascript" src="/assets/scripts/bootstrap-tagsinput.js"></script>
 
 </head>
 

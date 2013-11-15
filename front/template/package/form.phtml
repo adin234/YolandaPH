@@ -1,0 +1,167 @@
+<section class="container">
+    <h2>Donation Form</h2>
+    <section class="content clearfix">
+        <div class="form">
+            <form class="form-horizontal" method="POST">
+                <input type="hidden" id="lat" name="lat" />
+                <input type="hidden" id="long" name="long" />
+                <div class="row full clearfix">
+                    <div class="half left">
+                        <input type="text" name="firstName" id="firstName" class="full form-control"
+                            placeholder="First Name" />
+                    </div>
+                    <div class="half right">
+                        <input type="text" name="lastName" id="lastName" class="full form-control"
+                            placeholder="Last Name"/>
+                    </div>
+                </div>
+                <div class="row full">
+                    <input type="text" id="contact" name="contact" class="full form-control"
+                        placeholder="Contact Number"/>
+                </div>
+                <div class="row full">
+                    <input type="email" name="email" class="full form-control" placeholder="Email" />
+                </div>
+                <div class="row full">
+                    <input type="text" name="address" class="full form-control" placeholder="Address" />
+                </div>
+                <div class="row full">
+                    <select multiple name="donations" class="full form-control" placeholder="Donations"></select>
+                </div>
+                <div class="row full">
+                    <textarea name="more" class="full form-control" rows="5" placeholder="More Details"></textarea>
+                </div>
+                <div class="row full">
+                    <div class="half left">
+                        <input type="radio" name="type" value="lbc" id="lbc"/>
+                        <label for="lbc">Drop Off (LBC)</label>
+                    </div>
+                    <div class="half right">
+                        <input type="radio" name="type" value="xend" id="xend"/>
+                        <label for="xend">Pick-up (Xend)</label>
+                    </div>
+                </div>
+                <button type="submit" class="right btn btn-primary">Donate</button>
+            </form>
+        </div>
+        <div class="map">
+            <div id="map-canvas" class="map" style="width: 100%; height: 100%"></div>
+        </div>
+    </section>
+</section>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+<script type="text/javascript" src="//google-maps-utility-library-v3.googlecode.com/svn/trunk/styledmarker/src/StyledMarker.js"></script>
+<script>
+    var map;
+    var overlays = [];
+    var userLatLng;
+
+    $(document).ready(function() {
+        initialize();
+        $('select[name=donations]').tagsinput()
+
+        $('select[name=donations]').tagsinput('input').typeahead({
+            name: 'donations',
+            local: ['clothes', 'water', 'school supplies']
+        });
+
+        $('input[name=type]').click(function() {
+            var id = this.id;
+            if(id=='xend') {
+                clearOverlays();
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                clearOverlays();
+                navigator.geolocation.getCurrentPosition(function(e) {
+                    showPosition(e);
+                    var request = {
+                        location: userLatLng,
+                        radius: '500',
+                        query: 'lbc'
+                    };
+
+                    service = new google.maps.places.PlacesService(map);
+                    service.textSearch(request, callback);
+                });
+            }
+        });
+
+        var param = $.urlParam('type');
+        if(param) {
+            $('input#'+param).click();
+        }
+    });
+
+    function clearOverlays() {
+        while(overlays[0]) {
+            overlays.pop().setMap(null);
+        }
+    }
+
+    function showPosition(position) {
+        userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        var marker = new google.maps.Marker({
+            position: userLatLng,
+            title: 'Your Location',
+            draggable: true,
+            map: map
+        });
+
+        var latlng = marker.getPosition();
+        document.getElementById('lat').value = latlng.lat();
+        document.getElementById('long').value = latlng.lng();
+
+        google.maps.event.addListener(marker, 'dragend', function() {
+            var latlng = marker.getPosition();
+            document.getElementById('lat').value = latlng.lat();
+            document.getElementById('long').value = latlng.lng();
+        });
+
+        overlays.push(marker);
+        map.setCenter(userLatLng);
+        return userLatLng;
+    }
+
+    function createMarker(pos, icon) {
+        var markerObj = {
+            position: pos.geometry.location,
+            title: pos.name+' '+pos.formatted_address,
+            map: map
+        };
+
+        if(icon) {
+            markerObj['icon'] = "http://maps.google.com/mapfiles/ms/icons/" + icon + ".png";
+        }
+
+        var marker = new google.maps.Marker(markerObj);
+
+        overlays.push(marker);
+    }
+
+    function initialize() {
+        var options = {
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+        }
+
+        map = new google.maps.Map(document.getElementById("map-canvas"), options);
+
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                var place = results[i];
+                createMarker(results[i], 'green');
+            }
+        }
+    }
+
+    $.urlParam = function(name){
+        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        return results[1] || 0;
+    }
+</script>

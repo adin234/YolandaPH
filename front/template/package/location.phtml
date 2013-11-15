@@ -1,7 +1,7 @@
 <section class="container">
 	<div class="maps-container">
     	<h2>Re-Packing Locations</h2>
-        <img src="http://clifference.com/wp-content/uploads/2013/05/google-maps.jpg" 
+        <img src="http://clifference.com/wp-content/uploads/2013/05/google-maps.jpg"
         style="margin: 10px 0;width: 100%;" />
     </div>
     <div class="filters">
@@ -11,14 +11,24 @@
         <div class="options">
         	<h3>CARRIER</h3>
             <div class="group">
-            	<input type="checkbox"> LBC
+            	<input id="lbc" name="type" type="radio" />
+                <label for="lbc">Drop (LBC)</label>
             </div>
             <div class="group">
-            	<input type="checkbox"> Xend
+            	<input id="xend" name="type" type="radio" />
+                <label for="xend">Pick-up (Xend)</label>
             </div>
         </div>
         <div class="actions">
-        	<a href="" class="donate">Donation Form</a>
+        	<a href="/package/form" class="donate">Donation Form</a>
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('input[name=type]').click(function() {
+            $('.container .filters .actions a').attr('href', '/package/form?type='+this.id);
+        });
+    });
+</script>

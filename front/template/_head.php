@@ -8,14 +8,15 @@
             <nav class="pull-right">
             	<ul>
                 	<li>
-                    	<a href="/" class="<?php echo ($active == 'home') 
+                    	<a href="/" class="<?php echo ($active == 'home')
 						? 'active' : NULL ?>">Home</a>
                     </li>
                 	<li>
-                    	<a href="/package/location" class="<?php echo ($active == 'location') 
+                    	<a href="/package/location" class="<?php echo ($active == 'location')
 						? 'active' : NULL ?>">Re-Packing</a>
                     </li>
-                	<li><a href="">Reports</a></li>
+                	<li><a href="/reports" class="<?php echo ($active == 'reports')
+                        ? 'active' : NULL ?>">Reports</a></li>
                 </ul>
             </nav>
         </div>
