@@ -1,0 +1,53 @@
+/* CSS Document */
+/* GLOBAL
+----------------------------------*/
+.clearfix:after { clear: both; }
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+
+.pull-left { float: left; }
+.pull-right { float: right; }
+.container { margin: auto; max-width: 1000px; }
+
+body {
+	background: url(/assets/images/bg.png);
+	color: #333333;
+	font-family: open_sansregular;
+	font-size: 13px;
+}
+
+/* HEAD
+----------------------------------*/
+header {
+	background: #FFFFFF;
+	box-shadow: 1px 1px 10px #8B8B8B;
+	position: fixed;
+	width: 100%;
+}
+header .wrapper { border-top: solid 5px #60d99c; }
+header .wrapper .header-content { margin: auto; width: 1000px; }
+header .wrapper .logo { margin-top: 7px; }
+header .wrapper .logo span { position: absolute; text-indent: -10000px; }
+
+header .wrapper .header-content nav ul li {
+	display: inline-block;
+}
+header .wrapper .header-content nav ul li a {
+	border-bottom: solid 2px transparent;
+	display: block;
+	padding: 20px 15px;
+	text-decoration: none;
+}
+header .wrapper .header-content nav ul li a.active,
+header .wrapper .header-content nav ul li a:hover { border-bottom: solid 2px #60d99c; }
+
+/* BODY
+----------------------------------*/
+.body { padding-top: 65px; }
+
+/* FOOT
+----------------------------------*/
+footer {
+	background: #222222;
+	border-top: solid 5px #60d99c;
+	padding: 30px 0;
+}

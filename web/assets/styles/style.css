@@ -1,0 +1,114 @@
+/* CSS Document */
+/* CAROUSEL */
+.body .carousel { background: #FFFFFF; }
+.body .carousel .frame {
+	margin: auto;
+	padding-bottom: 40px;
+	width: 1000px;
+}
+
+/* HOMEPAGE */
+.body .homepage-wrapper {
+	border-top: 1px solid #DDDDDD;
+	padding: 20px 0;
+}
+.body .homepage-wrapper h4,
+.body .homepage-wrapper h2,
+.body .homepage-wrapper h6 { text-align: center; }
+.body .homepage-wrapper h4 {
+	font-size: 25px;
+	margin: auto;
+	width: 800px;
+}
+.body .homepage-wrapper h4 .line {
+	background: #BCBCBC;
+	height: 1px;
+	margin: 0 auto;
+	margin-top: 13px;
+	width: 275px;
+	position: relative;
+}
+.body .homepage-wrapper h4 span { float: left; margin: 0 20px; }
+.body .homepage-wrapper h2 {
+	font-size: 40px;
+	font-family: open_sansbold;
+	margin: 10px 0;
+}
+.body .homepage-wrapper h6 {
+	border-bottom: 1px solid #BCBCBC;
+	margin: auto;
+	padding-bottom: 20px;
+	width: 800px;
+}
+.body .homepage-wrapper .places { margin: 50px 0; }
+.body .homepage-wrapper .places .item {
+	background: #FFFFFF;
+	box-shadow: 0 0 5px #C5C5C5;
+	float: left;
+	margin: 15px;
+	width: 300px;
+}
+.body .homepage-wrapper .places .item .content { padding: 15px 10px; }
+.body .homepage-wrapper .places .item .content h3 {
+	font-family: open_sansbold;
+	font-size: 25px;
+	line-height: 30px;
+	margin: 5px 0;
+	text-align: center;
+}
+.body .homepage-wrapper .places .item .content img { width: 100%; }
+.body .homepage-wrapper .places .item .content p {
+	font-family: open_sanslight;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 5px 0;
+}
+
+.body .homepage-wrapper .note {
+	background: #FFFFFF;
+	box-shadow: 0 0 5px #BEBEBE;
+	padding: 20px;
+	text-align: center;
+}
+
+/* PACKAGE LOCATION */
+.location .maps-container {
+	background: #FFFFFF;
+	padding: 30px 20px;
+}
+.location .maps-container h2 {
+	font-family: open_sansbold;
+	font-size: 30px;
+}
+.location .filters {
+	background: #FFFFFF;
+	box-shadow: 0 0 5px #BEBEBE;
+	padding: 10px;
+	position: fixed;
+	right: 0;
+	top: 20%;
+	width: 150px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.location .filters h3 {
+	border-bottom: dashed 1px #ccc;
+	font-family: open_sansbold;
+	font-size: 15px;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+}
+.location .filters .options .group { margin: 5px 0; }
+.location .filters .options input[type="checkbox"] { margin-top: -1px; }
+.location .filters .actions { margin-top: 20px; }
+.location .filters .actions a.donate {
+	background: #60d99c;
+	border-radius: 3px;
+	color: #FFFFFF;
+	display: block;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
