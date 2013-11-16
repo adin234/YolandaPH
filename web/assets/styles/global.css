@@ -8,6 +8,12 @@
 .pull-right { float: right; }
 .container { margin: auto; max-width: 1000px; }
 
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
 body {
 	background: url(/assets/images/bg.png);
 	color: #333333;
@@ -22,6 +28,7 @@ header {
 	box-shadow: 1px 1px 10px #8B8B8B;
 	position: fixed;
 	width: 100%;
+	z-index: 2;
 }
 header .wrapper { border-top: solid 5px #60d99c; }
 header .wrapper .header-content { margin: auto; width: 1000px; }

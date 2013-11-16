@@ -1,8 +1,13 @@
+<style type="text/css">
+    #map-canvas { height: 450px; width: 100%; }
+</style>
+
 <section class="container">
 	<div class="maps-container">
     	<h2>Re-Packing Locations</h2>
-        <img src="http://clifference.com/wp-content/uploads/2013/05/google-maps.jpg"
-        style="margin: 10px 0;width: 100%;" />
+        <div id="map-canvas"></div>
+        <!-- <img src="http://clifference.com/wp-content/uploads/2013/05/google-maps.jpg"
+        style="margin: 10px 0;width: 100%;" /> -->
     </div>
     <div class="filters">
     	<div class="icons">
@@ -25,10 +30,94 @@
     </div>
 </section>
 
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('input[name=type]').click(function() {
             $('.container .filters .actions a').attr('href', '/package/form?type='+this.id);
         });
     });
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+    function createMarker(lat, lng, name, map) {
+         var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lng), 
+            map: map 
+        });
+
+        // var contentString = locations[i][0];
+        var infowindow = new google.maps.InfoWindow();
+        infowindow.setContent(name);
+
+        // on mouse over show info window
+        google.maps.event.addListener(marker, 'mouseover', function(){
+            infowindow.open(map, marker);
+        });
+        google.maps.event.addListener(marker, 'mouseout', function(){
+            infowindow.close(map, marker);
+        });
+    }
+
+    var map;
+    function initialize() {
+        var mapCenter = new google.maps.LatLng(14.571829, 121.048462); //pioneer
+
+        var markers = [];
+        var bsaTower = { 
+            'name' : 'BSA Tower 1, Bank Dr, Mandaluyong City, Philippines', 
+            'lat'  : 14.586044, 
+            'lng'  : 121.058239 
+        },
+        pioneer = {
+            'name' : 'Pioneer, Mandaluyong City, Metro Manila, Philippines',
+            'lat'  : 14.571829,
+            'lng'  : 121.048462
+        },
+        abscbn = {
+            'name' : 'ABS-CBN Tower, Mother Ignacia Avenue, Quezon City, Philippines',
+            'lat'  : 14.640648,
+            'lng'  : 121.036565
+        },
+        redcross = {
+            'name' : 'Philippine Red Cross - Manila Chapter, Manila, Metro Manila, Philippines',
+            'lat'  : 14.599512,
+            'lng'  : 120.984219
+        };
+
+        markers.push(bsaTower);
+        markers.push(pioneer);
+        markers.push(abscbn);
+        markers.push(redcross);
+
+        console.log(markers[1]['lat']);
+
+        var mapOptions = {
+            scrollwheel: true,
+            navigationControl: true,
+            mapTypeControl: true,
+            scaleControl: true,
+            panControl: true,
+            zoomControl: true,
+            zoom: 12,
+            center: bsaTower,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        
+        // add markers
+        for (var i=0; i < markers.length; i++) {
+            var lat  = markers[i]['lat'],
+                lng  = markers[i]['lng'],
+                name = markers[i]['name'];
+
+            createMarker(lat, lng, name, map);
+        };
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
 </script>
